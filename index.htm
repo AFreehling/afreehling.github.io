@@ -29,7 +29,7 @@
   </head>
 <!-- NAVBAR
 ================================================== -->
-  <body>
+  <body onload="run()">
     <div class="navbar-wrapper">
       <div class="container">
 
@@ -66,12 +66,15 @@
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       </ol> -->
       <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <img src="./images/test1.jpg" alt="First slide">
+        <div id="imageBackground" class="item active">
+          <!-- <img src="./images/test1.jpg" alt="First slide"> 
+		  <canvas id="testing">
+		  </canvas>-->
+		  <img id="background1" src="">
           <div class="container">
             <div class="carousel-caption">
               <h1>Adam's GitHub</h1>
-              <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
+              <p> Learning, discovering, creating, and crafting <code>code</code> one line at a time. </p>
             </div>
           </div>
         </div>
@@ -124,8 +127,8 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h2 class="featurette-heading">While I'm still building. <span class="text-muted">Check this out.</span></h2>
+          <p class="lead">While I'm still working on putting my profile page together, head over to <a href="https://github.com/maroslaw/rainyday.js">maroslaw's github page</a> and check out his awesome rainyday.js library! It's what I'm using for the header of the page currently.</p>
         </div>
         <div class="col-md-5">
           <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
@@ -164,7 +167,7 @@
       <!-- FOOTER -->
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p>&copy; 2015 AF, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
 
     </div><!-- /.container -->
@@ -172,11 +175,41 @@
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
+	
+
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="../../assets/js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+	<!--<script>
+		var canvas = document.getElementById("testing");
+		var context = canvas.getContext("2d");
+		canvas.width = 200;
+		canvas.height = 200;
+		
+		context.fillRect(0, 0, canvas.width, canvas.height);
+		
+		context.fillStyle = "white";
+		context.fillRect(20, 20, 10, 10);
+	</script> -->
+	
+	    <script src="./scripts/rainyday.js"></script>
+        <script>
+            function run() {
+                var image = document.getElementById('background1');
+				var parentElement = document.getElementById("imageBackground");
+                image.onload = function() {
+                    var engine = new RainyDay({
+                        image: this,
+						parentElement: parentElement
+                    });
+					engine.rain([ [0, 2, 200], [3, 3, 1] ], 500);
+				};
+                image.crossOrigin = 'anonymous';
+                image.src = 'http://i.imgur.com/OVQkDRE.jpg';
+            }
+        </script>
   </body>
 </html>
